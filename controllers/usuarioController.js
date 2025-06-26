@@ -17,9 +17,9 @@ const atualizaUsuario = async (req, res) => {
     const usuario = req.body;
     usuario.email = req.usuario.email; // Garante que só atualize o próprio usuário
     const ok = await atualizaUsuarioDB(usuario);
-    res.json({ mensagem: ok ? "Atualizado com sucesso" : "Nada atualizado" });
+    res.json({ status: "success", mensagem: ok ? "Atualizado com sucesso" : "Nada atualizado" });
   } catch (err) {
-    res.status(400).json({ erro: err });
+    res.status(400).json({ status: "error", mensagem: err });
   }
 };
 
